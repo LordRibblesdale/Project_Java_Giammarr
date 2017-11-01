@@ -31,18 +31,17 @@ public class Ese09_4 {
         do {
           System.out.print("Scrivi la tua data di nascita (col formato dd/mm/yyyy): ");
           date = keyboard.nextLine();
-        } while (date.length() > 10 && date.charAt(2) != '/' && date.charAt(5) != '/');
+          isCorrectInput = date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/';
+        } while (!isCorrectInput);
 
-        day = date.codePointCount(0,1);       //TODO FIX this bad input (day prende la data, month e year solo una cifra)
-        month = date.codePointCount(3,4);
-        year = date.codePointCount(6,10);
-
-        System.out.println(date + " " + month + " " + year);
+        day = Integer.parseInt(date.substring(0,2));
+        month = Integer.parseInt(date.substring(3,5));
+        year = Integer.parseInt(date.substring(6,date.length()));
 
         isCorrectInput = (day >= 1 || day <= 31) && (month >= 1 || month <= 12) && (year >= 1900 || year <= 2015);
       } while (!isCorrectInput);
 
-      switch (month) {
+      switch (month) {                              //TODO: reset switch if input is wrong
         case 1: {
           monthStr = "Gennaio";
           break;
