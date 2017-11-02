@@ -22,6 +22,6 @@ public class Ese09_3 {
       strReplace += "*";
     }
 
-    System.out.println("Frase censurata:\n\t" + str1.replace(word, strReplace));
+    System.out.println("Frase censurata:\n\t" + str1.replaceAll("(?i)" + word, "(?i)" + strReplace));
   }
 }
