@@ -22,4 +22,5 @@
 hs_err_pid*
 
 #Java temporary files from jEdit
-*.java~
+*.java
+*.swp
