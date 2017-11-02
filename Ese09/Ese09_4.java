@@ -18,15 +18,15 @@ public class Ese09_4 {
     strErr1 = "La data non e' corretta: quel mese non ha il giorno 31.\n";
     strErr2 = "La data non e' corretta: quell'anno non e' bisestile.\n";
 
-    boolean isLeapDay, isCorrectInput = true, isCorrectDay = true;
+    boolean isCorrectInput = true, isCorrectDay = false, isLeapDay;
     Scanner keyboard = new Scanner(System.in);
 
-    do {
-      System.out.println(strErr);
       do {
         if (!isCorrectInput) {
-          System.out.println("Data non corretta, reinserirla.");
-        }
+	  if(!isCorrectDay) {
+          System.out.println(strErr);
+       	  }
+	 }
 
         do {
           System.out.print("Scrivi la tua data di nascita (col formato dd/mm/yyyy): ");
@@ -38,8 +38,36 @@ public class Ese09_4 {
         month = Integer.parseInt(date.substring(3,5));
         year = Integer.parseInt(date.substring(6,date.length()));
 
-        isCorrectInput = (day >= 1 || day <= 31) && (month >= 1 || month <= 12) && (year >= 1900 || year <= 2015);
-      } while (!isCorrectInput);
+        if ((day >= 1 || day <= 31) && (month >= 1 || month <= 12) && (year >= 1900 || year <= 2015)) {
+		isCorrectInput = true;
+		
+		
+	    if (month == 2) {
+		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			isLeapDay = true;		
+		}
+		else isLeapDay = false;
+		
+		if (day < 30 && isLeapDay) {
+			isCorrectDay = true;		
+		}
+		else if (day < 29 && !isLeapDay) {
+			isCorrectDay = true;
+		}
+		else {
+			isCorrectDay = false;
+	   		strErr = strErr2;
+		}
+	   }
+
+	   if (month == 4 || month == 6 || month == 9 || month == 11) {
+		if (day != 31) {
+			isCorrectDay = true;
+		}
+       	   }
+	} 
+	else isCorrectInput = false;
+      } while (!isCorrectInput || !isCorrectDay);
 
       switch (month) {                              //TODO: reset switch if input is wrong
         case 1: {
@@ -47,51 +75,24 @@ public class Ese09_4 {
           break;
         }
         case 2: {
-          if (day < 30) {
-            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-              monthStr = "Febbraio";
-              break;
-            }
-            else if (day != 29) {
-              monthStr = "Febbeaio";
-              break;
-            }
-            else {
-              isCorrectDay = false;
-              strErr = strErr2;
-              break;
-            }
-          }
+          monthStr = "Febbraio";
+          break;
         }
         case 3: {
           monthStr = "Marzo";
           break;
         }
         case 4: {
-          if (day != 31) {
-            monthStr = "Aprile";
-            break;
-          }
-          else {
-            isCorrectDay = false;
-            strErr = strErr1;
-            break;
-          }
+          monthStr = "Aprile";
+          break;
         }
         case 5: {
           monthStr = "Maggio";
           break;
         }
         case 6: {
-          if (day != 31) {
-            monthStr = "Giugno";
-            break;
-          }
-          else {
-            isCorrectDay = false;
-            strErr = strErr1;
-            break;
-          }
+          monthStr = "Giugno";
+          break;
         }
         case 7: {
           monthStr = "Luglio";
@@ -102,37 +103,22 @@ public class Ese09_4 {
           break;
         }
         case 9: {
-          if (day != 31) {
-            monthStr = "Settembre";
-            break;
-          }
-          else {
-            isCorrectDay = false;
-            strErr = strErr1;
-            break;
-          }
+          monthStr = "Settembre";
+          break;
         }
         case 10: {
           monthStr = "Ottobre";
           break;
         }
         case 11: {
-          if (day != 31) {
             monthStr = "Febbraio";
             break;
-          }
-          else {
-            isCorrectDay = false;
-            strErr = strErr1;
-            break;
-          }
         }
         case 12: {
           monthStr = "Dicembre";
           break;
         }
-      }
-    } while (isCorrectDay == false);
+    }
 
     System.out.println("La data di nascita e': " + day + " " + monthStr + " " + year);
   }
