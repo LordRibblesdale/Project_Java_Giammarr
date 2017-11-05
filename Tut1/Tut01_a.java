@@ -1,5 +1,5 @@
 //Domenico Verde
-public class Tut01 {
+public class Tut01_a {
   public static void main(String[] args) {
     String sameNum = "";
     boolean isFoundNum = false, isPrimeNum = true;
@@ -11,9 +11,7 @@ public class Tut01 {
       sameNum = sameNum.valueOf(num*primeNum);
 
       if (sameNum.equals("111111111")) {
-        isFoundNum = true;
         System.out.println(num + "*" + primeNum + " = " + sameNum);
-        System.exit(0);
       }
     }
 
@@ -44,3 +42,4 @@ public class Tut01 {
       }
     }
   }
+}
