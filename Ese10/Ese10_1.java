@@ -3,9 +3,7 @@
 import java.util.Scanner;
 
 public class Ese10_1 {
-  public static boolean isFound(boolean b) {
-    return b;
-  }  
+  public static boolean isFound = false;
 
   public static int bruteMCD(int x, int y) {
     int mcd = 0;
@@ -24,25 +22,20 @@ public class Ese10_1 {
   }
 
   public static int zeroTest(int x, int y) {
-    boolean isFound = false;
     if (x == 0) {
-      return y;
       isFound = true;
-      isFound(isFound);
+      return y;
     }   
     else if (y == 0) {
-      return x;
       isFound = true;
-      isFound(isFound);
+      return x;
     }
     else {
       isFound = false;
-      isFound(isFound);
     }
   }
 
   public static int euclidean(int x, int y) {
-    boolean isFound = isFound(/*boh*/);
     zeroTest(x, y);
     if (!isFound) {
       if (x > y) {
