@@ -15,11 +15,11 @@ public class Ese11_2_3 {
     if (input == 'Y') {
       return true;
     }
-    else if (input == 'N') {
+    else if (input == 'n') {
       return false;
     }
     else {
-      choice();
+      return choice();
     }
   }
 
