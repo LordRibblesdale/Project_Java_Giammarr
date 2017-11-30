@@ -4,24 +4,28 @@ import java.util.Scanner;
 
 public class Test1 {
   public static void drawD(int a, char c) {
-    int chars = 1, fixedA = a-1, maxChars = (2*a)-3;
+    int chars = 1, variableA = a-1, maxChars = (2*a)-3;
 
     System.out.println();
-    for (int i = 1; i < fixedA; i++, a--) {
-      for (int space = fixedA-1; space >= 0; space--) {
-        System.out.print(" ");
+    for (int i = 1; i < variableA; i++, chars += 2) {
+      int moreChars = 1;
+
+      for (int space = variableA-1; space >= 0; space--) {
+        System.out.print("_");
       }
 
-      for (int lineCh = 1; chars <= lineCh && lineCh <= maxChars; lineCh += 2) {
-        chars = 1;
+      while (moreChars <= chars) {
         System.out.print(c);
+        moreChars++;
       }
+      System.out.println();
+      variableA--;
     }
   }
 
   public static void main(String[] args) {
     double a = Math.random();
-    int num = 14-4+1, b = (int)Math.floor(a*num)+4;
+    int b = (int)Math.floor(a*11)+4;
 
     Scanner keyboard = new Scanner(System.in);
     System.out.print("\nHere: ");
