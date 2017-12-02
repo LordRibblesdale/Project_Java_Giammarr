@@ -15,6 +15,7 @@ public class Ese11_1 {
 	 return second;
 	}
 
+/*
 	public static long fibonacciRec(int a) {
 		long tmp2 = 0;
 
@@ -26,6 +27,16 @@ public class Ese11_1 {
 			return fibonacciRec(a); //every method call in itself has to be initialised with return (if the method isn't void)
 		}
 		else return second;
+	}
+	*/
+
+	public static int fibonacciRec(int a) {
+		if (a == 1 || a == 2) {
+			return a;
+		}
+		else {
+			return fibonacciRec(a-1)+fibonacciRec(a-2);
+		}
 	}
 
 	public static void main(String[] args) {
