@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Test1 {
   public static void drawD(int a, char c) {
-    int chars = 1, variableA = a-1, maxChars = (2*a)-3;
+    int chars = 1, variableA = a-1, maxL = (2*a)-1;
 
     System.out.println();
     for (int i = 1; i < variableA; i++, chars += 2) {
@@ -20,6 +20,10 @@ public class Test1 {
       }
       System.out.println();
       variableA--;
+    }
+
+    for (int i = 1; i < maxL; i++) {
+      System.out.print(c);
     }
   }
 
