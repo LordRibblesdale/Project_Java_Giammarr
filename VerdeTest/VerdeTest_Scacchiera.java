@@ -27,13 +27,12 @@ public class VerdeTest_Scacchiera {
 
       switch (b1) {
         case 0: {
-          indexB1[0] = b;
-          indexB1[1] = d;
+          indexB1 = {b, d};
+
           break;
         }
         case 1: {
-          indexB2[0] = b;
-          indexB2[1] = d;
+          indexB2 = {b, d};
           break;
         }
       }
@@ -48,9 +47,9 @@ public class VerdeTest_Scacchiera {
 
     while(!isFound && count != 2) {
       a1 = Math.random();
-      b = (int)Math.floor(a1*7)+1;
+      b = (int)Math.floor(a1*8);
       c = Math.random();
-      d = (int)Math.floor(c*7)+1;
+      d = (int)Math.floor(c*8);
 
       if (a[b][d] == 'B') {
         isFound = false;
@@ -60,17 +59,14 @@ public class VerdeTest_Scacchiera {
 
         switch (count) {
           case 0: {
-            indexN1[0] = b;
-            indexN1[1] = d;
+            indexN1 = {b, d};
             break;
           }
           case 1: {
-            indexN2[0] = b;
-            indexN2[1] = d;
+            indexN2 = {b, d};
             break;
           }
         }
-
         count++;
       }
     }
@@ -88,141 +84,24 @@ public class VerdeTest_Scacchiera {
   }
 
   public static void move(char[][] a, char c) {
-    char c;
-
-    switch(c) {
-      //L'idea e' quella di analizzare se una torre dello stesso colore e'
-      // tra la torre nera e la torre bianca analizzata, per calcolare
-      // se la prima torre può mangiare quella avversaria o meno.
-      //Andrebbe fatto sia per riga sia per colonna, sia per B sia per N
+    int[] numsN = new int[2], numsB = new int[2];
+    int count1 = 0, count2 = 0;
+    switch (c) {
       case 'B': {
-        if (indexB1[0] == indexN1[0]) { //B1 nella stessa riga di N1
-          if (indexB2[0] == indexB1[0]) { //Se B2 e' nella stessa riga
-            if (indexB2[1] > indexB1[1]) { //Se B2 e' a destra di B1
-              if (indexB2[1] < indexN1[1]) {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              } //Se B2 è tra N1 e B1
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-            }
-            else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
+        for (int i = 0; i < 8; i++) {
+          count1 = 0;
+          count2 = 0;
+            for (int j = 0; j < 8; j++) {
+              if (a[i][j] == 'N') {
+                numsN[count1] = j;
+                count1++;
               }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
+              else if (a[i][j] == 'B') {
+                numsB[count2] = j;
+                count2++;
               }
             }
-          }
-          else {
-            System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-          }
-        }
-        else if (indexB1[0] == indexN2[0]) { //B1 stessa riga di N2
-          if (indexB2[0] == indexB1[0]) { //B1 nella stessa riga di B1
-            if (indexB2[1] > indexB1[1]) { //B2 a destra di B1
-              if (indexB2[1] < indexN2[1]) {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ", poiche B2 e' tra le due torri.");
-              } //B2 tra N2 e B1
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
-            }
-            else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
-              }
-            }
-          }
-          else {
-            System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
-          }
-        }
-        else if (indexB2[0] == indexN1[0]) {
-          if (indexB1[0] == indexB2[0]) { //Se B2 e' nella stessa riga
-            if (indexB1[1] > indexB2[1]) { //Se B2 e' a destra di B1
-              if (indexB1[1] < indexN1[1]) {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              } //Se B2 è tra N1 e B1
-              else {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-            }
-            else {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-              }
-            }
-          }
-          else {
-            System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-          }
-        }
-        else if (indexB2[0] == indexN2[0]) {
-          if (indexB1[0] == indexB2[0]) { //Se B1 e' nella stessa riga
-            if (indexB1[1] > indexB2[1]) { //Se B1 e' a destra di B2
-              if (indexB1[1] < indexN2[1]) {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") non puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ", poiche B2 e' tra le due torri.");
-              } //Se B1 è tra N1 e B2
-              else {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-            }
-            else {
-                System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-              }
-            }
-          }
-          else {
-            System.out.println("B2 (" + indexB2[0] + " " + indexB2[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-          }
-        }
-      }
-
-      case 'N': {
-        if (indexB1[0] == indexN1[0]) {
-          if (indexB2[0] == indexB1[0]) {
-            if (indexB2[1] > indexB1[1]) {
-              if (indexB2[1] < indexN1[1]) {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-            }
-            else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-              }
-            }
-          }
-          else {
-            System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN1[0] + " " + indexN1[1] + ").");
-          }
-        }
-        else if (indexB1[0] == indexN2[0]) {
-          if (indexB2[0] == indexB1[0]) {
-            if (indexB2[1] > indexB1[1]) {
-              if (indexB2[1] < indexN2[1]) {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
-            }
-            else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") non puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ", poiche B2 e' tra le due torri.");
-              }
-              else {
-                System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
-              }
-            }
-          }
-          else {
-            System.out.println("B1 (" + indexB1[0] + " " + indexB1[1] + ") puo' mangiare N1 (" + indexN2[0] + " " + indexN2[1] + ").");
+            if (numsN[0])
           }
         }
       }
@@ -237,9 +116,5 @@ public class VerdeTest_Scacchiera {
 
     print(chess);
 
-    move(chess, 'B');
-    print(chess);
-    move(chess, 'N');
-    print(chess);
   }
 }
