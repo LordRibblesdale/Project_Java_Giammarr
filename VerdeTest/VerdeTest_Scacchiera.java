@@ -19,9 +19,9 @@ public class VerdeTest_Scacchiera {
 
     for (int b1 = 0; b1 < 2; b1++) {
       a1 = Math.random();
-      b = (int)Math.floor(a1*7)+1;
+      b = (int)Math.floor(a1*8);
       c = Math.random();
-      d = (int)Math.floor(c*7)+1;
+      d = (int)Math.floor(c*8);
 
       a[b][d] = 'B';
 
@@ -203,7 +203,7 @@ public class VerdeTest_Scacchiera {
 
     do {
       maxMoves++;
-    } while (!endMove(chess) && maxMoves < 100);
+    } while (!endMove(chess) && maxMoves < 1);
 
     print(chess);
   }
