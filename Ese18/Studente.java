@@ -70,19 +70,17 @@ public class Studente {
     }
   }
 
-  public void setGrades(int[] gradesIn, int start) {
-    for (int i = start; i < gradesIn.length; i++) {
-      grades[i] = gradesIn[i];
-    }
+  public void setGrades(int value, int index) {
+      grades[index] = value;
   }
 
-  public void print(Studente object) {
+  public void print() {
     System.out.println("Dati dello studente: ");
-    System.out.println("- Nome: " + object.getName());
-    System.out.println("- Matricola: " + object.getMatricola());
+    System.out.println("- Nome: " + getName());
+    System.out.println("- Matricola: " + getMatricola());
 
-    for (int i = 0; i < object.grades.length; i++) {
-      System.out.println("Voto " + i+1 + ": " + grades[i]);
+    for (int i = 0; i < grades.length; i++) {
+      System.out.println("Voto " + (i+1) + ": " + grades[i]);
     }
   }
 
