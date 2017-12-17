@@ -4,9 +4,7 @@ public class Studente {
   private String name;
   private int matricola;
   private int[] grades = new int[5];
-  private double[] gatherGrades = new double[];
   private static int numS = 0;
-
 
   public Studente(String nameS, int matricolaS) {
     name = nameS;
@@ -83,34 +81,29 @@ public class Studente {
     System.out.println("- Nome: " + object.getName());
     System.out.println("- Matricola: " + object.getMatricola());
 
-    for (i = 0; i < object.getGrades.length(); i++) {
-      System.out.println("Voto " + i+1 + ": " + getGrades[i]);
+    for (int i = 0; i < object.grades.length; i++) {
+      System.out.println("Voto " + i+1 + ": " + grades[i]);
     }
   }
 
-  private void average()
+  public double average() {
+    int sum = 0, index = grades.length;
 
-  public void bubbleSort(double[] avg){
-    boolean isSorted = true;
-    int i = 0, temp = 0;
-
-    while (i < avg.length && isSorted) {
-      isSorted = false;
-
-      for (int j = 0; j < avg.length-1; j++) {
-        if (avg[j] > avg[j+1]) {
-          temp = avg[j];
-          avg[j+1] = avg[j];
-          avg[j] = temp;
-          isSorted = true;
-        }
+    for (int i = 0; i < index; i++) {
+      if (grades[i] == 0) {
+        index--;
       }
-
-      i++;
+      else {
+        sum += grades[i];
+      }
     }
+    return (sum/index);
   }
 
   public boolean equals(Studente object) {
-
+    if (average() == object.average()) {
+      return true;
+    }
+    else return false;
   }
 }
