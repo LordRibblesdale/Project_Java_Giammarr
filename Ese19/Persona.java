@@ -30,20 +30,7 @@ public class Persona {
   }
 
   public static void main(String[] args) {
-    Persona unBroccolis = new Persona();
-    unBroccolis.setName("Caio De Broccolis");
-    unBroccolis.setBirth(2017);
-    System.out.println(unBroccolis.toString());
-
-    Persona dueBroccolis = new Persona("Caio De Broccolis");
-    dueBroccolis.setBirth(2017);
-    System.out.println(dueBroccolis.toString());
-
-    Persona treBroccolis = new Persona(2017);
-    treBroccolis.setName("Caio De Broccolis");
-    System.out.println(treBroccolis.toString());
-
-    Persona quattroBroccolis = new Persona("Caio De Broccolis", 2017);
-    System.out.println(quattroBroccolis.toString());
+    Persona deBroccolis = new Persona("Caio De Broccolis", 2017);
+    System.out.println(deBroccolis.toString());
   }
 }
