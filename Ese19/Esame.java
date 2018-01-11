@@ -2,6 +2,12 @@ public class Esame extends Insegnamento {
   private int grade;
   private boolean isLode;
 
+  public Esame() {
+    super();
+    grade = 0;
+    isLode = false;
+  }
+
   public Esame(String nameC, int yearC, int gradeIn) {
     super(nameC, yearC);
     grade = gradeIn;

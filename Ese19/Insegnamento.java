@@ -2,6 +2,11 @@ public class Insegnamento {
   private int annoDiCorso;
   private String nomeCorso;
 
+  public Insegnamento() {
+    annoDiCorso = 0;
+    nomeCorso = "NaN";
+  }
+
   public Insegnamento(String nameC, int yearC) {
     nomeCorso = nameC;
     annoDiCorso = yearC;

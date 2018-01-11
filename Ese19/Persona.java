@@ -4,6 +4,11 @@ public class Persona {
   private String name;
   int birth;
 
+  public Persona() {
+    name = "NaN";
+    birth = 0;
+  }
+
   public Persona(String nameIn, int year) {
     name = nameIn;
     birth = year;
