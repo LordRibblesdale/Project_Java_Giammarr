@@ -5,11 +5,12 @@ public class Esame extends Insegnamento {
   public Esame(String nameC, int yearC, int gradeIn) {
     super(nameC, yearC);
     grade = gradeIn;
+  }
 
-    if (grade == 30) {
-      isLode = true;
-    }
-    else isLode = false;
+  public Esame(String nameC, int yearC, int gradeIn, boolean lode) {
+    super(nameC, yearC);
+    grade = gradeIn;
+    isLode = lode;
   }
 
   public int getGrade() {
@@ -18,15 +19,14 @@ public class Esame extends Insegnamento {
 
   public void setGrade(int gradeIn) {
     grade = gradeIn;
-
-    if (grade == 30) {
-      isLode = true;
-    }
-    else isLode = false;
   }
 
   public boolean getB() {
     return isLode;
+  }
+
+  public void setB(boolean bIn) {
+    isLode = bIn;
   }
 
   public String toString() {
@@ -36,6 +36,7 @@ public class Esame extends Insegnamento {
   public static void main(String[] args) {
     Esame unBroccolis = new Esame("Java", 1, 28);
     Esame dueBroccolis = new Esame("Lab", 2, 30);
-    System.out.println(unBroccolis.toString() + "\n\n" + dueBroccolis.toString());
+    Esame treBroccolis = new Esame("TDI", 1, 30, true);
+    System.out.println(unBroccolis.toString() + "\n\n" + dueBroccolis.toString() + "\n\n" + treBroccolis.toString());
   }
 }
