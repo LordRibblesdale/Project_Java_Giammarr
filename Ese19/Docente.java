@@ -62,6 +62,13 @@ public class Docente extends Persona {
     return super.toString() + "Materia1: " + getM1Nome() + "\nAnno di Corso: " + getM1Year() + "\nMateria2: " + getM2Nome() + "\nAnno di Corso: " + getM2Year();
   }
 
+  public boolean equals(Object obj) {
+    boolean isEqual = false;
+    if (obj != null && obj instanceof Docente) {
+
+    }
+  }
+
   public static void main(String[] args) {
     Docente deBroccolis = new Docente("Caio De Broccolis", 2017, "Analisi", 2, "Java", 1);
     System.out.println(deBroccolis.toString());

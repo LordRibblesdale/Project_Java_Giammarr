@@ -32,6 +32,15 @@ public class Insegnamento {
     return "Nome Corso: " + getNome() + "\nAnno di corso: " + annoDiCorso;
   }
 
+  public boolean equals(Object obj) {
+    boolan isEqual = false;
+    if (obj != null && obj instanceof Insegnamento) {
+      Insegnamento other = (Insegnamento)obj;
+      isEqual = (this.nomeCorso == other.nomeCorso) && (this.annoDiCorso == other.annoDiCorso);
+    }
+    return isEqual;
+  }
+
   public static void main(String[] args) {
     Insegnamento stm = new Insegnamento("STM", 1);
     System.out.println(stm.toString());

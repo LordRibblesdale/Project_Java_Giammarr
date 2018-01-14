@@ -34,6 +34,15 @@ public class Persona {
     return "Nome: " + getName() + "\nAnno di nascita: " + getBirth() + "\n";
   }
 
+  public boolean equals(Object obj) {
+    boolean isEqual = false;
+    if (obj != null && obj instanceof Studente) {
+      Persona other = (Persona)obj;
+      isEqual = (this.name == other.name) && (this.birth == other.birth);
+    }
+    return isEqual;
+  }
+
   public static void main(String[] args) {
     Persona deBroccolis = new Persona("Caio De Broccolis", 2017);
     System.out.println(deBroccolis.toString());

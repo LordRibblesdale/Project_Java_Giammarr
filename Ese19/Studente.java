@@ -1,35 +1,39 @@
+import java.util.Scanner;
+
 public class Studente extends Persona {
   private String matricola, toString;
   private Esame[] examList;
+  private int tmp;
   private double avg;
   private static int numStud = 0;
 
   public Studente() {
+    super();
     matricola = "NaN";
-    toString = super.toString();
     avg = 0;
   }
 
-  public Studente(String nameIn, int year, int no_Exams) {
-    super(nameIn, year);
-    examList = new Esame[no_Exams];
-
-    for (int i = 0; i < no_Exams; i++) {
-      examList[i] = new Esame(nameIn, year);
-    }
-
-    numStud++;
-    matricola = Integer.toString(22222+numStud);
-  }
-
-  public Studente(String nameIn, int year, int no_Exams, int[] gradeIn) {
+  public Studente(String nameIn, int year, String nameC, int yearC, int no_Exams) {
     super(nameIn, year);
     examList = new Esame[no_Exams];
 
     for (int i = 0; i < no_Exams; i++) {
       for (int j = 0; j < no_Exams; j++) {
-        examList[i] = new Esame(nameIn, year);
-        examList[i].setGrade(gradeIn[j]);
+        examList[i] = new Esame(nameC, yearC);
+      }
+    }
+    numStud++;
+    matricola = Integer.toString(22222+numStud);
+  }
+
+  public Studente(String nameIn, int year, String nameC, int yearC, int no_Exams, int[] gradeIn) {
+    super(nameIn, year);
+    examList = new Esame[no_Exams];
+
+    for (int i = 0; i < no_Exams; i++) {
+      for (int j = 0; j < no_Exams; j++) {
+        examList[i] = new Esame(nameC, yearC);
+        setGrades(gradeIn);
       }
     }
     numStud++;
@@ -45,38 +49,70 @@ public class Studente extends Persona {
   }
 
   public int[] getGrades() {
-    return examList[];
+    int[] gr = new int[examList.length];
+    for (int i = 0; i < examList.length; i++) {
+      gr[i] = examList[i].getGrade();
+    }
+    return gr;
   }
 
   public void setGrades(int[] gradesIn) {
-    if (gradesIn.length == examList[0].length) {
+    if (gradesIn.length == examList.length) {
       for (int i = 0; i < gradesIn.length; i++) {
-        examList[i] = gradesIn[i];
+        examList[i].setGrade(gradesIn[i]);
       }
     }
   }
 
   public String toString() {
     toString = super.toString() + "Matricola: " + getMatricola() + "\nVoti esami: ";
-    for (int i = 0; i < examList[0].length; i++) {
+    for (int i = 0; i < examList.length; i++) {
       toString = "\n\n" + examList[i].toString();
     }
     return toString;
   }
 
   public double average() {
-    for(int i = 0; i < examList.length; i++) {
-      average += examList[i].getGrade();
+    avg = 0;
+    for (int i = 0; i < examList.length; i++) {
+      avg += examList[i].getGrade();
     }
-    return (average / examList[0].length);
+    return (avg / examList.length);
+  }
+
+  public double average(int annoDiCorso) {
+    avg = 0;
+    tmp = 0;
+    for (int i = 0; i < examList.length; i++) {
+      if (examList[i].getAnno() == annoDiCorso) {
+        avg += examList[i].getGrade();
+        tmp++;
+      }
+    }
+    return (avg / tmp);
   }
 
   public static void main(String[] args) {
-    int i = 3;
-    int[][] grades;
+    String name, nameC, s1;
+    int year, yearC;
+    int[] grades = new int[10];
+    Studente[] stm = new Studente[3];
+    Scanner kb = new Scanner(System.in);
 
-    Studente[] student = new Studente[i];
+    for (int i = 0; i < 3; i++) {
+      System.out.print("\nInserisci il nome dello studente: ");
+      name = kb.nextLine();
+      year = (int)Math.floor(Math.random()*118)+1900;
 
-
+      for (int j = 0; j < 10; j++) {
+        grades[j] = (int)Math.floor(Math.random()*30);
+        System.out.print("\nInserisci il nome del corso: ");
+        nameC = kb.nextLine();
+        yearC = (int)Math.floor(Math.random()*3)+1;
+        stm[i] = new Studente(name, year, nameC, yearC, 10, grades);
+      }
+    System.out.println("Media generale: " + stm[i].average());
+    System.out.println("Media del secondo anno: " + stm[i].average(2));
+    }
   }
 }

@@ -8,9 +8,16 @@ public class Esame extends Insegnamento {
     isLode = false;
   }
 
+  public Esame(String nameC, int yearC) {
+    super(nameC, yearC);
+    grade = 0;
+    isLode = false;
+  }
+
   public Esame(String nameC, int yearC, int gradeIn) {
     super(nameC, yearC);
     grade = gradeIn;
+    isLode = false;
   }
 
   public Esame(String nameC, int yearC, int gradeIn, boolean lode) {
@@ -37,6 +44,15 @@ public class Esame extends Insegnamento {
 
   public String toString() {
     return super.toString() + "\nVoto: " + getGrade() + "\nLode: " + getB();
+  }
+
+  public boolean equals(Object obj) {
+    boolean isEqual = false;
+    if (obj != null && obj instanceof Esame) {
+      Esame other = (Esame)obj;
+      isEqual = super.equals(other) && (this.grade == other.grade) && (this.isLode == other.isLode);
+    }
+    return isEqual;
   }
 
   public static void main(String[] args) {
