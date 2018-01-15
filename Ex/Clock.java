@@ -63,7 +63,7 @@ public class Clock {
     }
   }
 
-  public int secplus() {
+  public void secplus() {
     setSec(ADD);
     if (getSec() == 0) {
       setMins(minutes++);
