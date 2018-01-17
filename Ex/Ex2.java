@@ -4,6 +4,7 @@ public class Ex2 {
   public static void main(String[] args) {
     int h, m, s, in;
     Scanner kb = new Scanner(System.in);
+    Clock clk = null;
 
     System.out.print("\nInserire ore: ");
     h = kb.nextInt();
@@ -16,18 +17,19 @@ public class Ex2 {
     do {
       System.out.print("\nHere[0-1]: ");
       in = kb.nextInt();
-    } while (in > 1 || i < 0);
+    } while (in > 1 || in < 0);
 
     switch (in) {
       case 0: {
-        Clock clk = new Digital(h, m ,s);
+        clk = new Digital(h, m ,s);
         break;
       }
       case 1: {
-        Clock clk = new Cucu(h, m, s);
+        clk = new Cucu(h, m, s);
         break;
       }
     }
+
     System.out.println(clk.toString());
 
     in = 0;
@@ -41,30 +43,30 @@ public class Ex2 {
         switch (in) {
           case 0: {
             System.out.print("\nHERE[hrs]: ");
-            hours = kb.nextInt();
-            clk.setHrs(hours);
+            h = kb.nextInt();
+            clk.setHrs(h);
             break;
           }
           case 1: {
             System.out.print("\nHERE[mins]: ");
-            minutes = kb.nextInt();
-            clk.setMins(minutes);
+            m = kb.nextInt();
+            clk.setMins(m);
             break;
           }
           case 2: {
             System.out.print("\nHERE[sec]: ");
-            seconds = kb.nextInt();
-            clk.setSec(seconds);
+            s = kb.nextInt();
+            clk.setSec(s);
             break;
           }
         }
+        System.out.println(clk.toString());
       }
       do {
         System.out.println("Vuoi apportare modifiche all'orologio?");
         System.out.print("\nHERE[0=N-1=Y]: ");
         in = kb.nextInt();
       } while (in < 0 || in > 1);
-
     } while (in != 0);
   }
 }
