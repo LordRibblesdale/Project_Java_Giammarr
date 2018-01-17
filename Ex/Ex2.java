@@ -21,19 +21,50 @@ public class Ex2 {
     switch (in) {
       case 0: {
         Clock clk = new Digital(h, m ,s);
+        break;
       }
       case 1: {
         Clock clk = new Cucu(h, m, s);
+        break;
       }
     }
     System.out.println(clk.toString());
 
-    System.out.println("Vuoi apportare modifiche all'orologio?");
-    /*
+    in = 0;
     do {
-      System.out.print("\nHERE[0=N-1=Y]: ");
-      in = kb.nextInt();
-    } while (in < 0 || in > 1);
-    */
+      if (in == 1) {
+        System.out.print("\nQuali modifiche vuoi apportare?[0=hrs, 1=min, 2=sec]: ");
+        do {
+          in = kb.nextInt();
+        } while (in < 0 || in > 2);
+
+        switch (in) {
+          case 0: {
+            System.out.print("\nHERE[hrs]: ");
+            hours = kb.nextInt();
+            clk.setHrs(hours);
+            break;
+          }
+          case 1: {
+            System.out.print("\nHERE[mins]: ");
+            minutes = kb.nextInt();
+            clk.setMins(minutes);
+            break;
+          }
+          case 2: {
+            System.out.print("\nHERE[sec]: ");
+            seconds = kb.nextInt();
+            clk.setSec(seconds);
+            break;
+          }
+        }
+      }
+      do {
+        System.out.println("Vuoi apportare modifiche all'orologio?");
+        System.out.print("\nHERE[0=N-1=Y]: ");
+        in = kb.nextInt();
+      } while (in < 0 || in > 1);
+
+    } while (in != 0);
   }
 }
