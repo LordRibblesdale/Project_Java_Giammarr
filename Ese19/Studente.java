@@ -18,9 +18,7 @@ public class Studente extends Persona {
     examList = new Esame[no_Exams];
 
     for (int i = 0; i < no_Exams; i++) {
-      for (int j = 0; j < no_Exams; j++) {
         examList[i] = new Esame(nameC, yearC);
-      }
     }
     numStud++;
     matricola = Integer.toString(22222+numStud);
