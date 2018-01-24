@@ -31,11 +31,9 @@ public class Studente extends Persona {
     examList = new Esame[no_Exams];
 
     for (int i = 0; i < no_Exams; i++) {
-      for (int j = 0; j < no_Exams; j++) {
-        examList[i] = new Esame(nameC, yearC);
-        setGrades(gradeIn);
-      }
+      examList[i] = new Esame(nameC, yearC);
     }
+    setGrades(gradeIn);
     numStud++;
     matricola = Integer.toString(22222+numStud);
   }
@@ -56,10 +54,10 @@ public class Studente extends Persona {
     return gr;
   }
 
-  public void setGrades(int[] gradesIn) {
-    if (gradesIn.length == examList.length) {
-      for (int i = 0; i < gradesIn.length; i++) {
-        examList[i].setGrade(gradesIn[i]);
+  public void setGrades(int[] grades) {
+    if (grades.length == examList.length) {
+      for (int i = 0; i < grades.length; i++) {
+        examList[i].setGrade(grades[i]);
       }
     }
   }

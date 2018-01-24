@@ -33,7 +33,7 @@ public class Insegnamento {
   }
 
   public boolean equals(Object obj) {
-    boolan isEqual = false;
+    boolean isEqual = false;
     if (obj != null && obj instanceof Insegnamento) {
       Insegnamento other = (Insegnamento)obj;
       isEqual = (this.nomeCorso == other.nomeCorso) && (this.annoDiCorso == other.annoDiCorso);
