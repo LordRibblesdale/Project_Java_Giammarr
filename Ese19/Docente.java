@@ -6,12 +6,6 @@ public class Docente extends Persona {
     super();
   }
 
-  public Docente(String nameIn, int year, String subject2, int yearC2) {
-    super(nameIn, year);
-    setM2Nome(subject2);
-    setM2Year(yearC2);
-  }
-
   public Docente(String nameIn, int year, String subject1, int yearC1) {
     super(nameIn, year);
     setM1Nome(subject1);
