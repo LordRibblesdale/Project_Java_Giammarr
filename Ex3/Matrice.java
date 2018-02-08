@@ -25,17 +25,6 @@ public class Matrice {
     return tmp;
   }
 
-  public static int minVett(int[] a, int in) {
-    int k = -1;
-
-    for (int k = 0; k < a.length; k++) {
-      if (a[k] == in) {
-        return k;
-      }
-    }
-    return k;
-  }
-
   public static int cercaSella(int[][] a) {
     int max = 0, min = 0;
 
@@ -52,21 +41,13 @@ public class Matrice {
     }
     return 0;
   }
+  
 
-  public static int cercaSella(int[][] a) {
-    int max = 0, min = 0;
+  public static void main(String[] args) {
+    int[][] matrix = genera(15, 20);
 
-    for (int i = 0; i < a.length; i++) {
-      min = minVett(a[i]);
-      for (int j = 0; j < a[i].length; j++) {
-        if (max < a[i][j]) {
-          max = a[i][j];
-        }
-      }
-      if (max == min) {
-        return 1;
-      }
+    if (cercaSella(matrix) == 1) {
+      System.out.println("Indici: [" + minVett(matrix))
     }
-    return 0;
   }
 }
