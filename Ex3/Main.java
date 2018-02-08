@@ -44,6 +44,37 @@ public class Main {
       d = p.getName();
       System.out.println("Vincitore: Mostro!");
     }
-    
+    System.out.println();
+
+    for (int i = 0; i < 20; i++) {
+      System.out.print("*");
+    }
+    System.out.print("\n*");
+    for (int i = 0; i < 18; i++) {
+      System.out.print(" ");
+    }
+    System.out.print("*\n*");
+    for (int i = 0; i < 5; i++) {
+      System.out.print(" ");
+    }
+    System.out.print(d);
+    for (int i = 0; i < 13-d.length(); i++) {
+      System.out.print(" ");
+    }
+    System.out.print("*\n*");
+    for (int i = 0; i < 18; i++) {
+      System.out.print(" ");
+    }
+    System.out.print("*\n");
+    for (int i = 0; i < 20; i++) {
+      System.out.print("*");
+    }
+  }
+
+  public static void main(String[] args) {
+    Alieno a = new Alieno("Robot", 147);
+    Mostro m = new Mostro("Grudd", "Du iu nou de wae", "Tacci de pippo");
+    System.out.println(a.toString() + "\n" + m.toString());
+    proclamaVincitore(fight(a, m));
   }
 }

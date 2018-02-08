@@ -10,7 +10,7 @@ public class Alieno extends Persona {
   }
 
   Alieno(String nIn, int matrIn) {
-    super();
+    super(nIn + Integer.toString(matrIn));
     vector1(ammo);
   }
 
