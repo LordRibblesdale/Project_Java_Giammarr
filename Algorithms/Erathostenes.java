@@ -1,5 +1,5 @@
 /* Sieves of Erathostenes
- * The sieves of Erathostenes is an algorrithm that finds prime numbers
+ * The sieves of Erathostenes is an algorithm that finds prime numbers
  *  removing from search every multiple of prime numbers
  *  (each value that isn't removed will be signed as prime number)
  * Author: LordRibblesdale
@@ -36,9 +36,9 @@ public class Erathostenes {
       }
    }
 
-   public static boolean isPrime(boolean[] array, int n) {
+   public static boolean isPrime(boolean] array, int n) {
       if (array[n-1]) {
-         return true;
+                  return true;
       } else return false;
    }
 }
