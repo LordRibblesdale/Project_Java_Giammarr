@@ -38,7 +38,7 @@ public class Erathostenes {
 
    public static boolean isPrime(boolean] array, int n) {
       if (array[n-1]) {
-                  return true;
+         return true;
       } else return false;
    }
 }
